@@ -1,0 +1,1 @@
+(App (Lambda "x" (Plus (Integer 5) (Variable "x")) IntType IntType) (Integer 3),IntType,Integer 3)

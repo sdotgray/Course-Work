@@ -1,0 +1,1 @@
+(\x -> if x == 5 then True else False) :: (Int -> Bool) -> Bool 

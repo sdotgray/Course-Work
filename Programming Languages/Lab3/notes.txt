@@ -1,0 +1,32 @@
+{
+-- Shannon Gray
+-- CMSC 305, Lab 3
+-- Due: Sunday, October 6, 2013
+module Main (main) where
+}
+
+%wrapper "basic" -- this will create a program that takes a string and returns a list of tokens
+
+$digit = [0-9]    -- Digits
+$alpha = [a-zA-Z] -- Alphabetic characters
+
+tokens :-
+  $white+ ; -- given any amount of whitespace, do nothing
+  "--".*  ; --comments, .* means call chars except for return
+  let     {\s -> LET}
+  in      {\s -> IN}
+  $digit+ {\s -> INTVAL (read s)}
+
+{
+
+-- The Token type
+data Token =
+    LET |
+    IN |
+    INTVAL Int
+    deriving (Eq,Show)
+
+main = do -- how you do input and output
+  s <- getContents -- assignment
+  print (alexScanTokens s) -- printout the list we get
+}  
